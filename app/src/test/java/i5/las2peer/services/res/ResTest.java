@@ -99,9 +99,11 @@ public class ResTest {
         
     try {
       ClientResponse result = c.sendRequest("GET", mainPath + "/test", "");
-          Object response = JSONValue.parse(result.getResponse().trim());
-Assert.assertTrue(response instanceof JSONObject);      
+          
       Assert.assertTrue("Status code equals 200 [405598]", result.getHttpCode() == 200);
+      Object response = JSONValue.parse(result.getResponse().trim());
+Assert.assertTrue(response instanceof JSONObject);      
+      Assert.assertTrue("Status code equals 201 [473942]", result.getHttpCode() == 201);
 
       System.out.println("Result of 'test$HTTP_Method_Name$': " + result.getResponse().trim());
     } catch (Exception e) {
